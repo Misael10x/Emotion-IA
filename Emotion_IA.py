@@ -440,3 +440,95 @@ X_test.shape
 # 
 
 # In[34]:
+
+
+# ReLU (Rectified Linear Unit)
+def relu(x):
+    return np.maximum(0, x)
+
+# Sigmoide
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+# Tangente hiperbólica (tanh)
+def tanh(x):
+    return np.tanh(x)
+
+
+# In[35]:
+
+
+# Simula un dataset
+import pandas as pd
+
+# Crear un DataFrame
+data = {'valores': np.linspace(-10, 10, 100)}
+df = pd.DataFrame(data)
+
+
+# In[36]:
+
+
+# Aplicar ReLU
+df['relu'] = relu(df['valores'])
+
+# Aplicar sigmoide
+df['sigmoid'] = sigmoid(df['valores'])
+
+# Aplicar tangente hiperbólica
+df['tanh'] = tanh(df['valores'])
+
+
+# In[42]:
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Definir las funciones de activación
+def relu(x):
+    return np.maximum(0, x)
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def tanh(x):
+    return np.tanh(x)
+
+# Crear el DataFrame de ejemplo
+data = {'valores': np.linspace(-10, 10, 200)}
+df = pd.DataFrame(data)
+df['relu'] = relu(df['valores'])
+df['sigmoid'] = sigmoid(df['valores'])
+df['tanh'] = tanh(df['valores'])
+
+# Crear la figura con tamaño mejorado
+plt.figure(figsize=(14, 8))
+
+# Graficar las funciones de activación con colores más atractivos y mejor contraste
+plt.plot(df['valores'], df['valores'], label='Identidad (y=x)', linestyle='--', color='gray', linewidth=2)  # Línea de referencia
+plt.plot(df['valores'], df['relu'], label='ReLU', color='#1f77b4', linewidth=2)  # Azul
+plt.plot(df['valores'], df['sigmoid'], label='Sigmoide', color='#ff7f0e', linewidth=2)  # Naranja
+plt.plot(df['valores'], df['tanh'], label='Tanh', color='#2ca02c', linewidth=2)  # Verde
+
+# Mejorar la visibilidad de los ejes
+plt.axhline(0, color='black', linewidth=1, alpha=0.7, linestyle='--')  # Línea horizontal en y=0
+plt.axvline(0, color='black', linewidth=1, alpha=0.7, linestyle='--')  # Línea vertical en x=0
+
+# Títulos y etiquetas
+plt.title('Comparación de Funciones de Activación', fontsize=16, fontweight='bold', color='#333333')
+plt.xlabel('Entrada', fontsize=14)
+plt.ylabel('Salida', fontsize=14)
+
+# Leyenda con estilo
+plt.legend(fontsize=12, loc='best', fancybox=True, shadow=True, framealpha=0.7)
+
+# Mejorar el grid
+plt.grid(visible=True, alpha=0.4, linestyle='--')
+
+# Ajustar los márgenes para mejor visualización
+plt.tight_layout()
+
+# Mostrar la gráfica
+plt.show()
